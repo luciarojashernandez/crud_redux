@@ -43,5 +43,5 @@ function EditarProducto() {
       
     )
 }
-//cambiso
+
 export default EditarProducto
