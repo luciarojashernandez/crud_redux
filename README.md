@@ -3,6 +3,7 @@ Cada parte de la app va a tener su reducer y cada reducer su state
 para más de un reducer usar {combine reducer}
 Los datos van a fluir desde el provider con store como parámetro
 
+*json-server db.json --port 4000
 
 *Types: describen lo que pasa en la app
 *Dispatch: función que toma otra función (manda a ejecutar esa función).
