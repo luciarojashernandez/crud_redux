@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 //Actions Redux
 import { crearNuevoProductoAction } from "../actions/productoActions";
 
-const NuevoProductos = () => {
+const NuevoProductos = ({history}) => {//rOuter dom tiene history
   //state local (del componente)
   const [nombre, guardarNombre] = useState("");
   const [precio, guardarPrecio] = useState(0);
 
   //utilizar useDispatch y te crea una función
   const dispatch = useDispatch();
+
+  //acceder al state del store
+  const cargando =useSelector(state=> state.productos.loading);
+  const error =useSelector(state => state.productos.error);
 
   //mandar llamar el action de productoAction
   const agregarProducto = (producto) => dispatch(crearNuevoProductoAction(producto));
@@ -27,6 +31,8 @@ const NuevoProductos = () => {
       nombre,
       precio
     });
+    //redireccionar a home
+    history.push('/');
   };
   return (
     <div className="row justify-content-center">
@@ -66,6 +72,8 @@ const NuevoProductos = () => {
                 Agregar
               </button>
             </form>
+            {cargando ? <p>Cargando...</p> :  null}
+            {error ? <p className="alert alert-danger p2 mt-4 text-center">Hubo error</p> :  null}
           </div>
         </div>
       </div>

@@ -1,24 +1,32 @@
-import React,{Fragment} from 'react'
+import React, { Fragment, useEffect } from "react";
+//Redux
+import { useSelector, useDispatch } from "react-redux"; //useSwlector para obtener el statea
+import { obtenerProductosAction } from "../actions/productoActions";
 
 const Productos = () => {
-    return (
-        <Fragment>
-            <h2 className="text-center my-5">Listado de Productos</h2>
+  const dispatch = useDispatch();
+  useEffect(() => {
+    //consultar API
+    const cargarProductos = () => dispatch(obtenerProductosAction());
+    cargarProductos();
+  }, []);
 
-            <table className="table table-striped">
-                <thead className="bg-primary table-dark">
-                    <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
-        </Fragment>
-    )
-}
+  return (
+    <Fragment>
+      <h2 className="text-center my-5">Listado de Productos</h2>
 
-export default Productos
+      <table className="table table-striped">
+        <thead className="bg-primary table-dark">
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </Fragment>
+  );
+};
+
+export default Productos;
