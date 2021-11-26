@@ -45,7 +45,7 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 loading: false,
-                error: null,
+                error: false,
                 productos: action.payload
             }
       
