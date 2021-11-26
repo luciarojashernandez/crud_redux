@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 //Crear nuevos productos
 export function crearNuevoProductoAction(producto){
     return async (dispatch)=>{
-        dispatch(agregarProducto()); //Intenta agrtegar un producto
+        dispatch(agregarProducto()); //Intenta agregar un producto
 
         //Alerta
         Swal.fire(
@@ -70,7 +70,7 @@ export function obtenerProductosAction(){
 
 
         try {
-            const respuesta = await clientAxios.get('/productos');
+            const respuesta = await clientAxios.get('/produ');
             //console.log(respuesta);
             dispatch (descargarProductosExitosa(respuesta.data));
         } catch (error) {
